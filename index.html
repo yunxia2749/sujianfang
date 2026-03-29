@@ -1,4 +1,4 @@
-<index.html>
+<!DOCTYPE html>
 <!-- 素见方 v20260329_011702 -->
 <html lang="zh-CN">
 <head>
@@ -567,6 +567,72 @@ nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:rgba(250,
   animation:fadeUp .9s ease both;
   animation-delay:.9s;
 }
+
+/* ═══ 冥想音频页面 ═══ */
+.med-card{
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:24px;
+  margin-bottom:20px;
+  box-shadow:0 2px 18px var(--shadow-warm);
+  transition:all .3s;
+}
+.med-card:hover{transform:translateY(-2px);box-shadow:0 8px 32px var(--shadow-warm);}
+.med-card-header{display:flex;gap:16px;align-items:flex-start;margin-bottom:12px;}
+.med-icon{font-size:36px;flex-shrink:0;line-height:1;}
+.med-info{flex:1;}
+.med-title{font-family:'Ma Shan Zheng',serif;font-size:20px;color:var(--ink);letter-spacing:.06em;margin-bottom:4px;}
+.med-sub{font-size:12px;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:4px;}
+.med-duration{font-size:11px;color:var(--candle);letter-spacing:.08em;}
+.med-desc{font-size:14px;color:var(--ink-soft);line-height:1.85;letter-spacing:.04em;}
+.med-coming{
+  margin-top:12px;
+  padding:10px 16px;
+  background:rgba(200,146,74,.06);
+  border-radius:10px;
+  font-size:13px;color:var(--ink-dim);
+  text-align:center;letter-spacing:.08em;
+  border:1px dashed rgba(200,146,74,.2);
+}
+audio::-webkit-media-controls-panel{background:rgba(247,232,224,.8);}
+
+
+/* ═══ 被爱过渡段 ═══ */
+.hp-love-strip{
+  padding:40px 32px;
+  background:linear-gradient(135deg,rgba(200,146,74,.08),rgba(240,200,180,.12));
+  text-align:center;
+  border-top:1px solid rgba(200,146,74,.12);
+  border-bottom:1px solid rgba(200,146,74,.12);
+}
+.hp-love-text{
+  font-family:'Ma Shan Zheng',serif;
+  font-size:clamp(18px,3.5vw,24px);
+  color:var(--ink-mid);
+  letter-spacing:.1em;line-height:2;
+}
+.hp-love-text span{
+  color:var(--candle);
+  font-size:clamp(20px,4vw,28px);
+}
+.hp-love-line{
+  font-family:'Ma Shan Zheng',serif;
+  font-size:clamp(19px,4vw,26px);
+  color:var(--ink);letter-spacing:.1em;
+  line-height:2;margin:0;
+  animation:fadeUp .9s ease both;
+}
+.hp-love-line:nth-child(1){animation-delay:.1s;}
+.hp-love-line:nth-child(2){animation-delay:.3s;}
+.hp-love-highlight{
+  font-family:'Ma Shan Zheng',serif;
+  font-size:clamp(22px,5vw,32px);
+  color:var(--candle);letter-spacing:.18em;
+  margin-top:12px;line-height:1.8;
+  animation:fadeUp .9s ease .5s both;
+}
+
 @keyframes scrollPulse{0%,100%{opacity:.4;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.1)}}
 
 /* divider */
@@ -1037,7 +1103,7 @@ nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:rgba(250,
 .hp-s3-sub{font-size:14px;color:var(--ink-soft);line-height:1.9;letter-spacing:.06em;margin:12px 0 32px;}
 
 .hp-healers-row{
-  display:grid;grid-template-columns:repeat(3,1fr);
+  display:grid;grid-template-columns:repeat(4,1fr);
   gap:14px;margin-bottom:28px;
 }
 .hp-healer-card{
@@ -1096,7 +1162,7 @@ nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:rgba(250,
 
 /* RESPONSIVE */
 @media(max-width:640px){
-  .hp-healers-row{grid-template-columns:1fr;}
+  .hp-healers-row{grid-template-columns:repeat(2,1fr);}
   .hp-pain-grid{grid-template-columns:repeat(2,1fr);}
   .hp-s4-btns .hp-main-btn,.hp-s4-btns .hp-ghost-btn{max-width:100%;}
 }
@@ -1538,6 +1604,7 @@ nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:rgba(250,
     <button class="nav-tab" onclick="showPage('mirror')" id="tab-mirror">心事透镜</button>
     <button class="nav-tab" onclick="showPage('seth')" id="tab-seth">见光对话</button>
     <button class="nav-tab" onclick="showPage('practice')" id="tab-practice">每日练习</button>
+    <button class="nav-tab" onclick="showPage('meditation')" id="tab-meditation">冥想音频</button>
   </div>
 </nav>
 
@@ -1598,14 +1665,14 @@ nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:rgba(250,
       <div class="hp-zen-tagline">素未谋面，一见如故，方见本色</div>
 
       <div class="hp-zen-poem">
-        <p class="hp-poem-line">我曾经不敢做自己</p>
-        <p class="hp-poem-line">以为讨好所有人，才能被留下</p>
-        <p class="hp-poem-line">直到有一天，我停下来</p>
-        <p class="hp-poem-line">回来做了自己</p>
-        <p class="hp-poem-highlight">你若盛开，蝴蝶自来</p>
+        <p class="hp-poem-line">你出生的那一刻</p>
+        <p class="hp-poem-line">就已经被这个世界恩宠着</p>
+        <p class="hp-poem-line2">只是后来，你忘了</p>
+        <p class="hp-poem-line2">没关系</p>
+        <p class="hp-poem-highlight">素见方，等你回家</p>
       </div>
 
-      <div class="hp-zen-answer">你也可以。</div>
+      <div class="hp-zen-answer">你已经够努力了</div>
 
       <button class="hp-main-btn" onclick="showPage('seth')">🌟 见光对话</button>
       <p class="hp-cta-hint">免费 · 不需要任何准备 · 说出你心里的话就够了</p>
@@ -1619,7 +1686,18 @@ nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:rgba(250,
     </div>
   </div>
 
-  <!-- ② 第二屏：真实案例 -->
+    <!-- 被爱的过渡段 -->
+  <div class="hp-love-strip">
+    <div class="hp-love-text">
+      <p class="hp-love-line">你出生的那一刻</p>
+      <p class="hp-love-line">就已经被这个世界恩宠着</p>
+      <p class="hp-love-line" style="margin-top:8px;font-size:clamp(15px,3vw,18px);color:var(--ink-soft);">只是后来，你忘了</p>
+      <p class="hp-love-line" style="margin-top:8px;font-size:clamp(15px,3vw,18px);color:var(--ink-soft);">没关系</p>
+      <p class="hp-love-highlight">素见方，等你回家</p>
+    </div>
+  </div>
+
+<!-- ② 第二屏：真实案例 -->
   <div class="hp-s2">
     <div class="hp-s2-inner">
       <div class="hp-s2-header">
@@ -1661,6 +1739,11 @@ nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:rgba(250,
           <div class="hp-healer-emoji">🌸</div>
           <div class="hp-healer-name">爱晓老师</div>
           <div class="hp-healer-tag">阿卡西解读 · 399元/次<br>纯能量链接 · 亲身体验</div>
+        </div>
+        <div class="hp-healer-card" onclick="showPage('healers')">
+          <div class="hp-healer-emoji">💫</div>
+          <div class="hp-healer-name">潘丹老师</div>
+          <div class="hp-healer-tag">催眠疗愈 · 金钱链接<br>国家心理治疗师</div>
         </div>
         <div class="hp-healer-card" onclick="showPage('healers')">
           <div class="hp-healer-emoji">🌿</div>
@@ -2068,6 +2151,102 @@ nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:rgba(250,
   </div>
 </div>
 
+
+<!-- PAGE: 冥想音频 -->
+<div class="page" id="page-meditation">
+  <div class="sec-head">
+    <div class="sec-eyebrow">静心 · 疗愈 · 回归</div>
+    <h1 class="sec-title"><span class="a">冥想</span>音频</h1>
+    <p class="sec-sub">在声音里放下，在寂静里相遇<br>每一次聆听，都是一次回家</p>
+    <div class="orn"><span class="orn-l"></span><span class="orn-d">✦</span><span class="orn-r"></span></div>
+  </div>
+
+  <div class="wrap" style="max-width:720px;margin:0 auto;padding:0 28px 100px;">
+
+    <!-- 音频卡片 1 -->
+    <div class="med-card">
+      <div class="med-card-header">
+        <div class="med-icon">☀️</div>
+        <div class="med-info">
+          <div class="med-title">与太阳链接</div>
+          <div class="med-sub">云霞老师引导 · 能量充电 · 适合清晨</div>
+          <div class="med-duration">🎵 引导冥想</div>
+        </div>
+      </div>
+      <div class="med-desc">让自己与太阳的能量链接，充满光与力量。每天清晨练习，感受生命力从内而外升起。</div>
+      <audio id="audio-sun" controls style="width:100%;margin-top:12px;border-radius:8px;">
+        <source src="https://raw.githubusercontent.com/yunxia2749/sujianfang/main/%E4%B8%8E%E5%A4%AA%E9%98%B3%E9%93%BE%E6%8E%A5(1).mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+      </audio>
+      <!-- <div class="med-coming" id="sun-coming">🌟 音频上线中，敬请期待</div> -->
+    </div>
+
+    <!-- 音频卡片 2 -->
+    <div class="med-card">
+      <div class="med-card-header">
+        <div class="med-icon">🌙</div>
+        <div class="med-info">
+          <div class="med-title">归于当下</div>
+          <div class="med-sub">五分钟安定冥想 · 适合睡前</div>
+          <div class="med-duration">🎵 即将上线</div>
+        </div>
+      </div>
+      <div class="med-desc">放下今天所有的重量，让身体和心回到此刻。五分钟，带你安静下来。</div>
+      <div class="med-coming">🌙 即将上线</div>
+    </div>
+
+    <!-- 音频卡片 3 -->
+    <div class="med-card">
+      <div class="med-card-header">
+        <div class="med-icon">🌿</div>
+        <div class="med-info">
+          <div class="med-title">情绪消融</div>
+          <div class="med-sub">释放积压情绪 · 适合任何时刻</div>
+          <div class="med-duration">🎵 即将上线</div>
+        </div>
+      </div>
+      <div class="med-desc">当情绪来了，不用压抑它，用这个冥想陪它走完。情绪消融了，你会发现底下有光。</div>
+      <div class="med-coming">🌿 即将上线</div>
+    </div>
+
+    <!-- 音频卡片 4 -->
+    <div class="med-card">
+      <div class="med-card-header">
+        <div class="med-icon">💫</div>
+        <div class="med-info">
+          <div class="med-title">灵魂蓝图激活</div>
+          <div class="med-sub">连接你的更高自我 · 深度冥想</div>
+          <div class="med-duration">🎵 即将上线</div>
+        </div>
+      </div>
+      <div class="med-desc">闭上眼睛，跟随引导，去见见那个真正的你。你比你以为的，更有力量。</div>
+      <div class="med-coming">💫 即将上线</div>
+    </div>
+
+    <!-- 音频卡片 5 -->
+    <div class="med-card">
+      <div class="med-card-header">
+        <div class="med-icon">🌸</div>
+        <div class="med-info">
+          <div class="med-title">与金钱链接</div>
+          <div class="med-sub">潘丹老师引导 · 财富频率</div>
+          <div class="med-duration">🎵 即将上线</div>
+        </div>
+      </div>
+      <div class="med-desc">清理对金钱的限制信念，打开内心的接收频道。当你真正允许丰盛，它就会来。</div>
+      <div class="med-coming">🌸 即将上线</div>
+    </div>
+
+    <!-- 底部引导 -->
+    <div style="text-align:center;margin-top:40px;padding:28px;background:rgba(200,146,74,.06);border-radius:20px;border:1px solid rgba(200,146,74,.15);">
+      <div style="font-family:'Ma Shan Zheng',serif;font-size:20px;color:var(--candle);margin-bottom:8px;">想要定制专属冥想？</div>
+      <div style="font-size:13px;color:var(--ink-soft);margin-bottom:16px;">联系云霞老师，为你录制专属引导冥想</div>
+      <button class="hp-main-btn" onclick="showPage('healers')" style="font-size:14px;padding:12px 28px;">联系疗愈师 →</button>
+    </div>
+
+  </div>
+</div>
+
 <!-- 手机底部导航 -->
 <nav class="bottom-nav" id="bottomNav">
   <div class="bottom-nav-items">
@@ -2086,6 +2265,10 @@ nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:rgba(250,
     <button class="bnav-item" id="bnav-practice" onclick="showPage('practice')">
       <span class="bnav-icon">🌅</span>
       <span class="bnav-label">每日练习</span>
+    </button>
+    <button class="bnav-item" id="bnav-meditation" onclick="showPage('meditation')">
+      <span class="bnav-icon">🎵</span>
+      <span class="bnav-label">冥想</span>
     </button>
     <button class="bnav-item" id="bnav-healers" onclick="showPage('healers')">
       <span class="bnav-icon">🌿</span>
@@ -2211,6 +2394,7 @@ const HEALERS = [
   },
   {
     id:'h2', name:'爱晓', enName:'Ai Xiao', emoji:'🌸',
+    photo:'data:image/jpeg;base64,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',
     photoBg:'linear-gradient(135deg,#f0e4f0,#e8d8ec)',
     modality:'阿卡西',
     tags:['阿卡西', '能量疗愈'],
@@ -2326,6 +2510,7 @@ function showPage(id){
   const bnav=document.getElementById('bnav-'+id);
   if(bnav)bnav.classList.add('active');
   document.getElementById('fabBtn').style.display=(id==='stories')?'flex':'none';
+  const bnavMed=document.getElementById('bnav-meditation');if(bnavMed)bnavMed.classList.toggle('active',id==='meditation');
   if(id==='home'){renderHomeCases();}
   if(id==='seth')loadSethHistory();
   stopAllAudio();window.scrollTo(0,0);
