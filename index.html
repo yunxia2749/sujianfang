@@ -4,556 +4,410 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>素见方 · 身心灵成长平台</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --gold:#c8924a;
-  --gold-light:#e8b870;
-  --gold-dim:rgba(200,146,74,.15);
-  --deep:#1a2f1a;
-  --deep2:#2a3f2a;
-  --ink:#2c1e12;
-  --ink-soft:#6a5040;
-  --ink-dim:#a09080;
-  --warm:#fdf8f0;
-  --cream:#f5ede0;
-  --card:rgba(255,252,246,.95);
-  --border:rgba(200,146,74,.2);
-  --nav-h:64px;
+  --gold:#c8924a;--gold-light:#e8b870;--gold-dim:rgba(200,146,74,.12);
+  --deep:#1a2f1a;--deep2:#2a4a2a;
+  --ink:#2c1e12;--ink-soft:#6a5040;--ink-dim:#a09080;
+  --warm:#fdf8f0;--cream:#f5ede0;
+  --card:rgba(255,252,246,.96);--border:rgba(200,146,74,.2);
   --shadow:0 4px 24px rgba(44,30,18,.08);
+  --nav-h:60px;
 }
-
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{
-  font-family:'Noto Serif SC',serif;
-  background:var(--warm);
-  color:var(--ink);
-  line-height:1.8;
-  overflow-x:hidden;
-}
+html,body{height:100%;}
+body{font-family:'Noto Serif SC',serif;background:var(--warm);color:var(--ink);overflow-x:hidden;}
 
-/* ═══ 导航 ═══ */
-nav{
+/* ═══ 顶部 ═══ */
+.top-bar{
   position:fixed;top:0;left:0;right:0;z-index:900;
   height:var(--nav-h);
-  background:rgba(253,248,240,.96);
-  backdrop-filter:blur(16px);
+  background:rgba(253,248,240,.97);backdrop-filter:blur(16px);
   border-bottom:1px solid var(--border);
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 32px;
+  padding:0 24px;
 }
-.nav-logo{
+.logo{
   font-family:'Ma Shan Zheng',serif;
-  font-size:22px;color:var(--gold);
-  letter-spacing:.15em;cursor:pointer;
-  text-decoration:none;
+  font-size:22px;color:var(--gold);letter-spacing:.18em;cursor:pointer;
 }
-.nav-logo span{font-size:11px;color:var(--ink-dim);letter-spacing:.2em;margin-left:8px;font-family:'Noto Serif SC',serif;}
-.nav-links{display:flex;gap:28px;list-style:none;}
-.nav-links a{
-  font-size:13px;color:var(--ink-soft);
-  letter-spacing:.1em;text-decoration:none;
-  transition:color .2s;
+.logo span{font-size:10px;color:var(--ink-dim);letter-spacing:.2em;margin-left:6px;font-family:'Noto Serif SC',serif;}
+.mp-btn{
+  font-size:11px;color:var(--gold);border:1px solid var(--gold);
+  padding:5px 14px;border-radius:100px;background:none;cursor:pointer;
+  letter-spacing:.08em;transition:all .2s;
 }
-.nav-links a:hover{color:var(--gold);}
-.nav-mp{
-  font-size:12px;color:var(--gold);
-  border:1px solid var(--gold);
-  padding:6px 16px;border-radius:100px;
-  cursor:pointer;transition:all .2s;
-  background:none;letter-spacing:.08em;
-}
-.nav-mp:hover{background:var(--gold);color:#fff8f0;}
+.mp-btn:hover{background:var(--gold);color:#fff8f0;}
 
-/* ═══ 首屏英雄区 ═══ */
+/* ═══ 首屏 ═══ */
 .hero{
-  min-height:100vh;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  padding:calc(var(--nav-h)+60px) 32px 80px;
-  text-align:center;
-  position:relative;overflow:hidden;
-  background:linear-gradient(170deg,#fdf8f0 0%,#f5ede0 50%,#ede0cc 100%);
+  padding:calc(var(--nav-h)+48px) 24px 48px;
+  text-align:center;position:relative;overflow:hidden;
+  background:linear-gradient(170deg,#fdf8f0 0%,#f5ede0 60%,#ede0cc 100%);
+  min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center;
 }
-.hero-canvas{
-  position:absolute;inset:0;
-  pointer-events:none;
-}
-.hero-content{position:relative;z-index:2;max-width:680px;}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:6px 18px;border-radius:100px;
-  border:1px solid var(--border);
-  background:rgba(200,146,74,.08);
-  font-size:12px;color:var(--gold);
-  letter-spacing:.15em;margin-bottom:28px;
-}
-.hero-title{
+.hero canvas{position:absolute;inset:0;pointer-events:none;}
+.hero-inner{position:relative;z-index:2;max-width:600px;}
+.hero-logo{
   font-family:'Ma Shan Zheng',serif;
-  font-size:clamp(42px,8vw,68px);
-  color:var(--gold);letter-spacing:.25em;
-  line-height:1.1;margin-bottom:12px;
+  font-size:clamp(40px,8vw,64px);color:var(--gold);
+  letter-spacing:.25em;line-height:1;margin-bottom:8px;
   text-shadow:0 2px 24px rgba(200,146,74,.2);
+  animation:fadeUp .8s ease both;
 }
-.hero-en{
-  font-size:13px;color:var(--ink-dim);
-  letter-spacing:.3em;margin-bottom:24px;
-}
-.hero-tagline{
-  font-size:clamp(15px,3vw,18px);
-  color:var(--ink-soft);letter-spacing:.1em;
-  margin-bottom:16px;line-height:1.9;
-}
-.hero-desc{
-  font-size:13px;color:var(--ink-dim);
-  letter-spacing:.06em;line-height:1.9;
-  margin-bottom:40px;
-  max-width:560px;margin-left:auto;margin-right:auto;
-}
-.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;}
-.btn-primary{
-  padding:14px 32px;border-radius:100px;border:none;
-  background:linear-gradient(135deg,var(--gold),var(--gold-light));
-  color:#fff8f0;font-family:'Noto Serif SC',serif;
-  font-size:14px;font-weight:500;letter-spacing:.12em;
-  cursor:pointer;transition:all .3s;
-  box-shadow:0 6px 24px rgba(200,146,74,.35);
-}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(200,146,74,.45);}
-.btn-ghost{
-  padding:13px 28px;border-radius:100px;
-  border:1.5px solid var(--gold);background:transparent;
-  color:var(--gold);font-family:'Noto Serif SC',serif;
-  font-size:14px;letter-spacing:.1em;cursor:pointer;
-  transition:all .25s;
-}
-.btn-ghost:hover{background:var(--gold-dim);}
-.hero-four{font-size:11px;color:var(--ink-dim);letter-spacing:.35em;opacity:.6;}
+.hero-sub{font-size:12px;color:var(--ink-dim);letter-spacing:.28em;margin-bottom:20px;animation:fadeUp .8s .1s ease both;}
+.hero-poem{margin-bottom:24px;animation:fadeUp .8s .2s ease both;}
+.hero-poem p{font-family:'Ma Shan Zheng',serif;font-size:clamp(16px,3.5vw,22px);color:var(--ink);letter-spacing:.1em;line-height:2;}
+.hero-poem .gold{color:var(--gold);font-size:clamp(20px,4.5vw,28px);}
+.hero-poem .soft{font-size:clamp(13px,2.5vw,16px);color:var(--ink-dim);}
+.hero-desc{font-size:12px;color:var(--ink-dim);line-height:1.9;letter-spacing:.05em;animation:fadeUp .8s .3s ease both;}
 
-/* ═══ 公众号条 ═══ */
-.mp-bar{
-  background:linear-gradient(135deg,var(--deep),var(--deep2));
-  padding:20px 32px;
-  display:flex;align-items:center;justify-content:center;gap:24px;
-  flex-wrap:wrap;
+/* ═══ Tab导航 ═══ */
+.tab-nav{
+  position:sticky;top:var(--nav-h);z-index:800;
+  background:rgba(253,248,240,.97);backdrop-filter:blur(16px);
+  border-bottom:2px solid var(--border);
+  display:flex;overflow-x:auto;
+  scrollbar-width:none;
 }
-.mp-bar-text{color:#e8f0e8;font-size:13px;letter-spacing:.1em;}
-.mp-bar-name{
+.tab-nav::-webkit-scrollbar{display:none;}
+.tab-btn{
+  flex-shrink:0;
+  padding:16px 24px;
   font-family:'Ma Shan Zheng',serif;
-  color:var(--gold-light);font-size:18px;letter-spacing:.15em;
+  font-size:15px;color:var(--ink-soft);letter-spacing:.1em;
+  border:none;background:none;cursor:pointer;
+  position:relative;transition:color .25s;
+  white-space:nowrap;
 }
-.mp-bar-btn{
-  padding:8px 20px;border-radius:100px;
-  border:1px solid var(--gold-light);
-  color:var(--gold-light);background:none;
-  font-size:12px;letter-spacing:.1em;cursor:pointer;
-  transition:all .2s;
+.tab-btn::after{
+  content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;
+  background:var(--gold);transform:scaleX(0);transition:transform .25s;
+  border-radius:2px 2px 0 0;
 }
-.mp-bar-btn:hover{background:rgba(232,184,112,.15);}
+.tab-btn.active{color:var(--gold);}
+.tab-btn.active::after{transform:scaleX(1);}
+.tab-btn:hover{color:var(--gold);}
 
-/* ═══ 通用区块 ═══ */
-.section{padding:80px 32px;}
-.section-inner{max-width:1080px;margin:0 auto;}
-.sec-head{text-align:center;margin-bottom:56px;}
-.sec-tag{
-  display:inline-block;
-  font-size:11px;color:var(--gold);
-  letter-spacing:.25em;margin-bottom:12px;
-  padding:4px 14px;border-radius:100px;
-  background:var(--gold-dim);
+/* ═══ Tab内容 ═══ */
+.tab-content{display:none;padding:40px 24px 80px;max-width:1080px;margin:0 auto;animation:fadeUp .5s ease;}
+.tab-content.active{display:block;}
+
+/* ═══ 区块标题 ═══ */
+.block-head{text-align:center;margin-bottom:40px;}
+.block-tag{
+  display:inline-block;font-size:10px;color:var(--gold);
+  letter-spacing:.25em;padding:3px 12px;border-radius:100px;
+  background:var(--gold-dim);margin-bottom:10px;
 }
-.sec-title{
+.block-title{
   font-family:'Ma Shan Zheng',serif;
-  font-size:clamp(28px,5vw,40px);
-  color:var(--ink);letter-spacing:.1em;margin-bottom:12px;
+  font-size:clamp(24px,5vw,36px);color:var(--ink);letter-spacing:.1em;margin-bottom:8px;
 }
-.sec-title span{color:var(--gold);}
-.sec-sub{font-size:14px;color:var(--ink-soft);letter-spacing:.06em;line-height:1.9;}
-.orn{display:flex;align-items:center;gap:12px;justify-content:center;margin-top:16px;}
-.orn-l,.orn-r{flex:1;max-width:80px;height:1px;background:var(--border);}
-.orn-d{color:var(--gold);font-size:12px;}
+.block-title span{color:var(--gold);}
+.block-sub{font-size:13px;color:var(--ink-soft);letter-spacing:.06em;line-height:1.8;}
+.orn{display:flex;align-items:center;gap:10px;justify-content:center;margin-top:12px;}
+.orn-l,.orn-r{flex:1;max-width:60px;height:1px;background:var(--border);}
+.orn-d{color:var(--gold);font-size:11px;}
 
 /* ═══ 活动卡片 ═══ */
-.activity-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-  gap:24px;
-}
+.act-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;}
 .act-card{
   background:var(--card);border:1px solid var(--border);
-  border-radius:20px;overflow:hidden;
-  box-shadow:var(--shadow);transition:all .3s;
+  border-radius:18px;overflow:hidden;box-shadow:var(--shadow);
+  transition:transform .25s;
 }
-.act-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(44,30,18,.12);}
-.act-card-head{
-  padding:24px 24px 16px;
-  background:linear-gradient(135deg,rgba(200,146,74,.08),rgba(200,146,74,.03));
+.act-card:hover{transform:translateY(-3px);}
+.act-head{
+  padding:20px 20px 14px;
+  background:linear-gradient(135deg,rgba(200,146,74,.07),transparent);
   border-bottom:1px solid var(--border);
 }
 .act-status{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:11px;letter-spacing:.1em;
-  padding:3px 12px;border-radius:100px;
-  margin-bottom:10px;
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:10px;letter-spacing:.12em;padding:3px 10px;
+  border-radius:100px;margin-bottom:8px;
 }
-.act-status.live{background:rgba(80,180,80,.12);color:#3a8a3a;border:1px solid rgba(80,180,80,.2);}
-.act-status.live::before{content:'';width:6px;height:6px;border-radius:50%;background:#4aaa4a;animation:pulse 1.5s infinite;}
-.act-status.soon{background:rgba(200,146,74,.12);color:var(--gold);border:1px solid var(--border);}
-.act-status.past{background:rgba(100,100,100,.08);color:var(--ink-dim);border:1px solid rgba(100,100,100,.15);}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
-.act-title{
-  font-family:'Ma Shan Zheng',serif;
-  font-size:20px;color:var(--ink);letter-spacing:.06em;margin-bottom:6px;
-}
-.act-date{font-size:12px;color:var(--gold);letter-spacing:.08em;}
-.act-body{padding:20px 24px 24px;}
+.live{background:rgba(60,160,60,.1);color:#3a8a3a;border:1px solid rgba(60,160,60,.2);}
+.live::before{content:'';width:5px;height:5px;border-radius:50%;background:#4aaa4a;animation:blink 1.5s infinite;}
+.soon{background:var(--gold-dim);color:var(--gold);border:1px solid var(--border);}
+.past{background:rgba(120,100,80,.08);color:var(--ink-dim);border:1px solid rgba(120,100,80,.15);}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
+.act-title{font-family:'Ma Shan Zheng',serif;font-size:18px;color:var(--ink);letter-spacing:.06em;margin-bottom:4px;}
+.act-date{font-size:11px;color:var(--gold);letter-spacing:.08em;}
+.act-body{padding:16px 20px 20px;}
 .act-desc{font-size:13px;color:var(--ink-soft);line-height:1.9;letter-spacing:.04em;}
+.act-tags{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0;}
+.atag{
+  font-size:11px;padding:4px 10px;border-radius:100px;
+  background:var(--gold-dim);border:1px solid var(--border);
+  color:var(--ink-soft);letter-spacing:.04em;
+}
 .act-btn{
-  margin-top:16px;display:inline-flex;align-items:center;gap:6px;
-  font-size:12px;color:var(--gold);letter-spacing:.1em;
+  display:inline-flex;align-items:center;gap:5px;margin-top:12px;
+  font-size:12px;color:var(--gold);letter-spacing:.08em;
   border:1px solid var(--border);border-radius:100px;
-  padding:7px 16px;cursor:pointer;background:none;
-  transition:all .2s;
+  padding:7px 14px;cursor:pointer;background:none;transition:all .2s;
 }
 .act-btn:hover{background:var(--gold-dim);border-color:var(--gold);}
 
-/* ═══ 往期精彩 ═══ */
-.past-wrap{
-  background:linear-gradient(135deg,rgba(200,146,74,.06),rgba(200,146,74,.02));
-  border:1px solid var(--border);border-radius:20px;
-  padding:32px;margin-top:32px;
-}
-.past-title{
-  font-family:'Ma Shan Zheng',serif;
-  font-size:22px;color:var(--ink);letter-spacing:.08em;margin-bottom:16px;
-}
-.past-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
-.past-tag{
-  padding:6px 14px;border-radius:100px;
-  font-size:12px;color:var(--ink-soft);letter-spacing:.06em;
-  background:rgba(200,146,74,.08);border:1px solid var(--border);
-}
-.past-text{font-size:13px;color:var(--ink-soft);line-height:1.95;letter-spacing:.04em;}
-
 /* ═══ 线下活动 ═══ */
-.offline-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;}
+.offline-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;}
 .offline-card{
   background:var(--card);border:1px solid var(--border);
-  border-radius:20px;padding:28px;
-  box-shadow:var(--shadow);transition:all .3s;
+  border-radius:18px;padding:24px;box-shadow:var(--shadow);transition:transform .25s;
 }
 .offline-card:hover{transform:translateY(-3px);}
-.offline-icon{font-size:40px;margin-bottom:14px;}
-.offline-title{
-  font-family:'Ma Shan Zheng',serif;
-  font-size:20px;color:var(--ink);letter-spacing:.06em;margin-bottom:8px;
+.offline-icon{font-size:36px;margin-bottom:12px;}
+.offline-title{font-family:'Ma Shan Zheng',serif;font-size:19px;color:var(--ink);letter-spacing:.06em;margin-bottom:4px;}
+.offline-date{font-size:11px;color:var(--gold);letter-spacing:.1em;margin-bottom:12px;}
+.offline-list{list-style:none;}
+.offline-list li{
+  font-size:13px;color:var(--ink-soft);padding:7px 0;
+  border-bottom:1px solid rgba(200,146,74,.08);letter-spacing:.04em;
 }
-.offline-sub{font-size:12px;color:var(--gold);letter-spacing:.1em;margin-bottom:12px;}
-.offline-items{list-style:none;}
-.offline-items li{
-  font-size:13px;color:var(--ink-soft);
-  padding:8px 0;border-bottom:1px solid rgba(200,146,74,.1);
-  letter-spacing:.04em;
-}
-.offline-items li:last-child{border-bottom:none;}
-.offline-items li::before{content:'✦ ';color:var(--gold);font-size:10px;}
+.offline-list li:last-child{border:none;}
+.offline-list li::before{content:'✦ ';color:var(--gold);font-size:9px;}
 
 /* ═══ 疗愈师 ═══ */
-.healers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:28px;}
-.healer-card{
+.healers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;}
+.h-card{
   background:var(--card);border:1px solid var(--border);
-  border-radius:24px;overflow:hidden;
-  box-shadow:var(--shadow);transition:all .3s;
+  border-radius:20px;overflow:hidden;box-shadow:var(--shadow);transition:all .3s;
 }
-.healer-card:hover{transform:translateY(-5px);box-shadow:0 16px 48px rgba(44,30,18,.14);}
-.healer-photo{
-  width:100%;height:240px;object-fit:cover;object-position:top;
-  display:block;
+.h-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(44,30,18,.12);}
+.h-photo{width:100%;height:220px;object-fit:cover;object-position:top;}
+.h-placeholder{
+  width:100%;height:220px;
+  background:linear-gradient(135deg,rgba(200,146,74,.12),rgba(200,146,74,.04));
+  display:flex;align-items:center;justify-content:center;font-size:56px;
 }
-.healer-photo-placeholder{
-  width:100%;height:240px;
-  background:linear-gradient(135deg,rgba(200,146,74,.15),rgba(200,146,74,.05));
-  display:flex;align-items:center;justify-content:center;
-  font-size:64px;
-}
-.healer-body{padding:22px;}
-.healer-name{
-  font-family:'Ma Shan Zheng',serif;
-  font-size:22px;color:var(--ink);letter-spacing:.08em;margin-bottom:4px;
-}
-.healer-en{font-size:11px;color:var(--ink-dim);letter-spacing:.2em;margin-bottom:10px;}
-.healer-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
-.healer-tag{
-  font-size:11px;padding:4px 11px;border-radius:100px;
+.h-body{padding:20px;}
+.h-name{font-family:'Ma Shan Zheng',serif;font-size:20px;color:var(--ink);letter-spacing:.08em;margin-bottom:2px;}
+.h-en{font-size:10px;color:var(--ink-dim);letter-spacing:.18em;margin-bottom:8px;}
+.h-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;}
+.h-tag{
+  font-size:10px;padding:3px 9px;border-radius:100px;
   background:var(--gold-dim);border:1px solid var(--border);
-  color:var(--gold);letter-spacing:.05em;
+  color:var(--gold);letter-spacing:.04em;
 }
-.healer-bio{font-size:13px;color:var(--ink-soft);line-height:1.85;letter-spacing:.04em;margin-bottom:16px;}
-.healer-price{
-  background:linear-gradient(135deg,rgba(200,146,74,.1),rgba(200,146,74,.05));
-  border:1px solid var(--border);border-radius:12px;
-  padding:14px 16px;margin-bottom:14px;
+.h-bio{font-size:12px;color:var(--ink-soft);line-height:1.85;letter-spacing:.04em;margin-bottom:12px;}
+.h-price-box{
+  background:linear-gradient(135deg,rgba(200,146,74,.09),rgba(200,146,74,.04));
+  border:1px solid var(--border);border-radius:10px;
+  padding:12px 14px;margin-bottom:12px;
 }
-.healer-price-label{font-size:11px;color:var(--ink-dim);letter-spacing:.1em;margin-bottom:4px;}
-.healer-price-val{
-  font-family:'Ma Shan Zheng',serif;
-  font-size:18px;color:var(--gold);letter-spacing:.06em;
-}
-.healer-contact{
-  display:flex;gap:8px;
-}
-.healer-wechat{
-  flex:1;padding:10px;border-radius:10px;
+.h-price-label{font-size:10px;color:var(--ink-dim);letter-spacing:.1em;margin-bottom:3px;}
+.h-price{font-family:'Ma Shan Zheng',serif;font-size:16px;color:var(--gold);letter-spacing:.05em;}
+.h-price-sub{font-size:11px;color:var(--gold);margin-top:1px;}
+.h-wechat{
+  width:100%;padding:9px;border-radius:10px;
   border:1px solid var(--border);background:none;
-  color:var(--ink-soft);font-size:12px;letter-spacing:.06em;
-  cursor:pointer;transition:all .2s;text-align:center;
+  color:var(--ink-soft);font-size:11px;letter-spacing:.06em;
+  cursor:pointer;transition:all .2s;
 }
-.healer-wechat:hover{border-color:var(--gold);color:var(--gold);}
+.h-wechat:hover{border-color:var(--gold);color:var(--gold);}
 
 /* ═══ 冥想音频 ═══ */
-.med-section{background:linear-gradient(170deg,#1a2f1a,#2a4a2a);}
-.med-section .sec-title{color:#e8f0e8;}
-.med-section .sec-sub{color:rgba(232,240,232,.6);}
-.med-section .sec-tag{background:rgba(200,184,74,.15);color:var(--gold-light);}
-.med-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;}
+.med-wrap{background:linear-gradient(170deg,#1a2f1a,#2a4a2a);border-radius:20px;padding:40px 28px;}
+.med-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:32px;}
 .med-card{
   background:rgba(255,255,255,.06);border:1px solid rgba(200,184,74,.2);
-  border-radius:18px;padding:22px;transition:all .3s;
+  border-radius:16px;padding:20px;transition:all .3s;
 }
 .med-card:hover{background:rgba(255,255,255,.1);transform:translateY(-2px);}
-.med-icon{font-size:32px;margin-bottom:12px;}
-.med-title{
-  font-family:'Ma Shan Zheng',serif;
-  font-size:18px;color:#e8f0e8;letter-spacing:.08em;margin-bottom:4px;
+.med-icon{font-size:28px;margin-bottom:10px;}
+.med-title{font-family:'Ma Shan Zheng',serif;font-size:16px;color:#e8f0e8;letter-spacing:.08em;margin-bottom:3px;}
+.med-teacher{font-size:10px;color:var(--gold-light);letter-spacing:.1em;margin-bottom:8px;}
+.med-desc{font-size:11px;color:rgba(232,240,232,.5);line-height:1.75;letter-spacing:.04em;margin-bottom:12px;}
+.med-audio{width:100%;border-radius:8px;height:34px;}
+.med-soon{
+  padding:9px;border-radius:8px;text-align:center;
+  background:rgba(200,184,74,.06);border:1px dashed rgba(200,184,74,.15);
+  font-size:11px;color:rgba(232,240,232,.35);letter-spacing:.1em;
 }
-.med-teacher{font-size:11px;color:var(--gold-light);letter-spacing:.1em;margin-bottom:10px;}
-.med-desc{font-size:12px;color:rgba(232,240,232,.55);line-height:1.8;letter-spacing:.04em;margin-bottom:14px;}
-.med-player{width:100%;border-radius:8px;height:36px;opacity:.85;}
-.med-coming{
-  padding:10px;border-radius:8px;
-  background:rgba(200,184,74,.08);
-  font-size:12px;color:rgba(232,240,232,.4);
-  text-align:center;letter-spacing:.1em;
-  border:1px dashed rgba(200,184,74,.15);
-}
+.med-head{text-align:center;margin-bottom:8px;}
+.med-head .block-title{color:#e8f0e8;}
+.med-head .block-sub{color:rgba(232,240,232,.55);}
+.med-head .block-tag{background:rgba(200,184,74,.15);color:var(--gold-light);}
 
-/* ═══ 公众号区 ═══ */
-.mp-section{
-  padding:72px 32px;
-  background:var(--cream);
-  text-align:center;
+/* ═══ 公众号浮条 ═══ */
+.mp-strip{
+  background:linear-gradient(135deg,var(--deep),var(--deep2));
+  border-radius:16px;padding:20px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:12px;margin-top:40px;
 }
-.mp-card{
-  max-width:560px;margin:0 auto;
-  background:var(--card);border:1px solid var(--border);
-  border-radius:24px;padding:40px;
-  box-shadow:var(--shadow);
+.mp-strip-left{display:flex;align-items:center;gap:14px;}
+.mp-strip-name{font-family:'Ma Shan Zheng',serif;font-size:20px;color:var(--gold-light);letter-spacing:.15em;}
+.mp-strip-desc{font-size:12px;color:rgba(232,240,232,.55);letter-spacing:.06em;line-height:1.7;}
+.mp-strip-btn{
+  padding:9px 20px;border-radius:100px;
+  border:1px solid var(--gold-light);color:var(--gold-light);
+  background:none;font-size:12px;letter-spacing:.1em;cursor:pointer;
+  transition:all .2s;white-space:nowrap;
 }
-.mp-icon{font-size:48px;margin-bottom:16px;}
-.mp-name{
-  font-family:'Ma Shan Zheng',serif;
-  font-size:28px;color:var(--gold);letter-spacing:.2em;margin-bottom:12px;
-}
-.mp-intro{font-size:14px;color:var(--ink-soft);line-height:1.9;letter-spacing:.06em;margin-bottom:24px;}
-.mp-qr-hint{
-  padding:20px;border-radius:16px;
-  background:var(--gold-dim);border:1px dashed var(--border);
-  font-size:13px;color:var(--ink-dim);letter-spacing:.08em;
-}
-
-/* ═══ 页脚 ═══ */
-footer{
-  background:var(--deep);
-  padding:40px 32px;
-  text-align:center;
-}
-.footer-logo{
-  font-family:'Ma Shan Zheng',serif;
-  font-size:22px;color:var(--gold-light);letter-spacing:.2em;margin-bottom:8px;
-}
-.footer-sub{font-size:11px;color:rgba(232,240,232,.3);letter-spacing:.15em;}
+.mp-strip-btn:hover{background:rgba(232,184,112,.15);}
 
 /* ═══ 手机底部导航 ═══ */
 .bottom-nav{
-  display:none;position:fixed;bottom:0;left:0;right:0;z-index:800;
+  display:none;position:fixed;bottom:0;left:0;right:0;z-index:850;
   background:rgba(253,248,240,.97);backdrop-filter:blur(16px);
   border-top:1px solid var(--border);
-  padding:8px 0 max(8px,env(safe-area-inset-bottom));
+  padding:6px 0 max(6px,env(safe-area-inset-bottom));
 }
 .bnav-items{display:flex;justify-content:space-around;}
 .bnav-item{
-  display:flex;flex-direction:column;align-items:center;gap:3px;
-  padding:4px 10px;border-radius:10px;
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  padding:4px 8px;border-radius:10px;
   background:none;border:none;cursor:pointer;flex:1;
 }
-.bnav-item.active .bnav-icon{color:var(--gold);}
-.bnav-item.active .bnav-label{color:var(--gold);font-weight:500;}
-.bnav-icon{font-size:19px;color:var(--ink-dim);transition:color .2s;}
-.bnav-label{font-size:10px;color:var(--ink-dim);letter-spacing:.04em;}
+.bnav-item.active .bi{color:var(--gold);}
+.bnav-item.active .bl{color:var(--gold);font-weight:500;}
+.bi{font-size:18px;color:var(--ink-dim);transition:color .2s;}
+.bl{font-size:9px;color:var(--ink-dim);letter-spacing:.04em;}
+
+/* ═══ Toast ═══ */
+.toast{
+  position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:#2c1e12;color:#fdf8f0;padding:10px 22px;
+  border-radius:100px;font-size:12px;z-index:9999;
+  letter-spacing:.06em;opacity:0;transition:all .3s;pointer-events:none;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
 /* ═══ 响应式 ═══ */
 @media(max-width:768px){
   .bottom-nav{display:block;}
-  body{padding-bottom:68px;}
-  nav .nav-links{display:none;}
-  .activity-grid{grid-template-columns:1fr;}
-  .healers-grid{grid-template-columns:1fr;}
-  .offline-grid{grid-template-columns:1fr;}
-  .med-grid{grid-template-columns:1fr;}
-  .hero-btns{flex-direction:column;align-items:center;}
-  .mp-bar{flex-direction:column;gap:12px;text-align:center;}
-  nav{padding:0 16px;}
+  body{padding-bottom:60px;}
+  .tab-nav{display:none;}
+  .act-grid,.offline-grid,.healers-grid,.med-grid{grid-template-columns:1fr;}
+  .mp-strip{flex-direction:column;}
+  .top-bar .mp-btn{display:none;}
+}
+@media(min-width:769px){
+  .bottom-nav{display:none!important;}
 }
 
 /* ═══ 动画 ═══ */
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
-@keyframes petalFall{
-  0%{transform:translateY(-20px) rotate(0deg);opacity:0;}
-  10%{opacity:.8;}
-  90%{opacity:.5;}
-  100%{transform:translateY(100vh) rotate(360deg);opacity:0;}
-}
-.fade-up{animation:fadeUp .8s ease both;}
-.fade-up-1{animation-delay:.1s;}
-.fade-up-2{animation-delay:.25s;}
-.fade-up-3{animation-delay:.4s;}
-.fade-up-4{animation-delay:.55s;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
 </style>
 </head>
 <body>
 
-<!-- 导航 -->
-<nav>
-  <a class="nav-logo" href="#home">素见方<span>Sù Jiàn Fāng</span></a>
-  <ul class="nav-links">
-    <li><a href="#online">线上活动</a></li>
-    <li><a href="#offline">线下活动</a></li>
-    <li><a href="#healers">疗愈师</a></li>
-    <li><a href="#meditation">冥想音频</a></li>
-    <li><a href="#mp">公众号</a></li>
-  </ul>
-  <button class="nav-mp" onclick="document.getElementById('mp').scrollIntoView({behavior:'smooth'})">关注公众号</button>
-</nav>
+<!-- 顶部Logo -->
+<header class="top-bar">
+  <div class="logo" onclick="showTab('home')">素见方<span>Sù Jiàn Fāng</span></div>
+  <button class="mp-btn" onclick="showTab('mp')">📱 关注公众号</button>
+</header>
 
 <!-- 首屏 -->
-<section class="hero" id="home">
-  <canvas class="hero-canvas" id="petalCanvas"></canvas>
-  <div class="hero-content">
-    <div class="hero-badge fade-up fade-up-1">✦ 素见方文化传媒有限公司</div>
-    <div class="hero-title fade-up fade-up-2">素见方</div>
-    <div class="hero-en fade-up fade-up-2">Sù Jiàn Fāng · 素未谋面，一见如故，方见本色</div>
-    <div class="hero-tagline fade-up fade-up-3">
-      你出生的那一刻<br>
-      就已经被这个世界恩宠着<br>
-      <span style="font-size:.85em;color:var(--ink-dim);">只是后来，你忘了。没关系——</span>
+<div id="page-home" class="active" style="display:block;">
+  <div class="hero">
+    <canvas id="petalCanvas"></canvas>
+    <div class="hero-inner">
+      <div class="hero-logo">素见方</div>
+      <div class="hero-sub">素未谋面，一见如故，方见本色</div>
+      <div class="hero-poem">
+        <p>你出生的那一刻</p>
+        <p>就已经被这个世界<span class="gold">恩宠着</span></p>
+        <p class="soft">只是后来，你忘了。没关系——</p>
+        <p class="gold" style="font-size:clamp(22px,5vw,32px);letter-spacing:.18em;margin-top:6px;">素见方，等你回家</p>
+      </div>
+      <div class="hero-desc">
+        通过教育、亲子关系、养老、健康、AI人工智能、催眠及心灵疗愈等多方面内容<br>
+        传播积极健康的生活理念与文化，助力人们提升生活品质与幸福感
+      </div>
     </div>
-    <div class="hero-desc fade-up fade-up-3">
-      通过教育、亲子关系、养老、健康、AI人工智能、催眠及心灵疗愈等多方面内容<br>
-      传播积极健康的生活理念与文化，助力人们提升生活品质与幸福感
-    </div>
-    <div class="hero-btns fade-up fade-up-4">
-      <button class="btn-primary" onclick="document.getElementById('online').scrollIntoView({behavior:'smooth'})">🌟 探索活动</button>
-      <button class="btn-ghost" onclick="document.getElementById('healers').scrollIntoView({behavior:'smooth'})">🌿 找到疗愈师</button>
-    </div>
-    <div class="hero-four fade-up" style="animation-delay:.7s">静 · 净 · 镜 · 敬</div>
   </div>
-</section>
 
-<!-- 公众号条 -->
-<div class="mp-bar">
-  <div class="mp-bar-text">关注微信公众号</div>
-  <div class="mp-bar-name">素见方</div>
-  <div class="mp-bar-text">获取最新活动资讯 · 共修课程 · 疗愈内容</div>
-  <button class="mp-bar-btn" onclick="document.getElementById('mp').scrollIntoView({behavior:'smooth'})">立即关注 →</button>
-</div>
+  <!-- Tab导航 -->
+  <div class="tab-nav" id="tabNav">
+    <button class="tab-btn active" onclick="showTab('online')">🌟 线上活动</button>
+    <button class="tab-btn" onclick="showTab('offline')">🌿 线下活动</button>
+    <button class="tab-btn" onclick="showTab('healers')">💫 有温度的疗愈</button>
+    <button class="tab-btn" onclick="showTab('meditation')">🎵 冥想音频</button>
+    <button class="tab-btn" onclick="showTab('mp')">📱 公众号</button>
+  </div>
 
-<!-- 线上活动 -->
-<section class="section" id="online" style="background:var(--warm);">
-  <div class="section-inner">
-    <div class="sec-head">
-      <div class="sec-tag">ONLINE ACTIVITIES</div>
-      <div class="sec-title">线上<span>活动</span></div>
-      <p class="sec-sub">跨越地域的连接，在云端共同成长</p>
+  <!-- 线上活动 -->
+  <div id="tab-online" class="tab-content active">
+    <div class="block-head">
+      <div class="block-tag">ONLINE ACTIVITIES</div>
+      <div class="block-title">线上<span>活动</span></div>
+      <p class="block-sub">跨越地域的连接，在云端共同成长</p>
       <div class="orn"><span class="orn-l"></span><span class="orn-d">✦</span><span class="orn-r"></span></div>
     </div>
-
-    <div class="activity-grid">
-      <!-- 正在进行 -->
+    <div class="act-grid">
       <div class="act-card">
-        <div class="act-card-head">
+        <div class="act-head">
           <div class="act-status live">正在进行</div>
           <div class="act-title">共修《当下的力量》</div>
-          <div class="act-date">📅 每周一 & 周四晚 20:00</div>
+          <div class="act-date">📅 每周一 & 周四 · 晚20:00</div>
         </div>
         <div class="act-body">
-          <div class="act-desc">
-            旧书新读，与艾克哈特·托利同行。无论你是初入心灵之门，还是想重温知新，都欢迎加入。让我们共同把书里的智慧，变成当下生活的力量。
-          </div>
+          <div class="act-desc">旧书新读，与艾克哈特·托利同行。无论你是初入心灵之门，还是想重温知新，都欢迎加入。让我们共同把书里的智慧，变成当下生活的力量。</div>
           <button class="act-btn">扫码进群参与 →</button>
         </div>
       </div>
 
-      <!-- 即将开始 -->
       <div class="act-card">
-        <div class="act-card-head">
+        <div class="act-head">
           <div class="act-status soon">即将开始</div>
           <div class="act-title">显化日记共修营</div>
-          <div class="act-date">📅 暂定4月17日 · 三月初一新月开始</div>
+          <div class="act-date">📅 暂定4月17日 · 三月初一新月</div>
         </div>
         <div class="act-body">
-          <div class="act-desc">
-            仪式感的动作可以破除头脑的限制，显化才可以畅通无阻。用写日记的方式，把你想要的生活一点一点显化出来。
-          </div>
+          <div class="act-desc">仪式感的动作可以破除头脑的限制，显化才可以畅通无阻。用写日记的方式，把你想要的生活一点一点显化出来。</div>
           <button class="act-btn">提前报名 →</button>
         </div>
       </div>
 
-      <!-- 往期精彩 -->
       <div class="act-card" style="grid-column:1/-1;">
-        <div class="act-card-head">
+        <div class="act-head">
           <div class="act-status past">往期精彩</div>
           <div class="act-title">2025年共修回顾</div>
-          <div class="act-date">📅 2025年全年</div>
+          <div class="act-date">📅 2025全年 · 多个课程</div>
         </div>
         <div class="act-body">
-          <div class="past-tags">
-            <span class="past-tag">21天丰盛之旅</span>
-            <span class="past-tag">24周万能金钥</span>
-            <span class="past-tag">健康之道</span>
-            <span class="past-tag">释放法</span>
-            <span class="past-tag">50天蜕变计划</span>
-            <span class="past-tag">感恩打卡</span>
-            <span class="past-tag">涡轮七星阵</span>
-            <span class="past-tag">49天彩虹能量夸夸营</span>
+          <div class="act-tags">
+            <span class="atag">21天丰盛之旅</span><span class="atag">24周万能金钥</span>
+            <span class="atag">健康之道</span><span class="atag">释放法</span>
+            <span class="atag">50天蜕变计划</span><span class="atag">感恩打卡</span>
+            <span class="atag">涡轮七星阵</span><span class="atag">49天彩虹能量夸夸营</span>
+            <span class="atag">秋葵姐的能量大拜</span>
           </div>
-          <div class="act-desc">
-            2025年，素见方见证了无数小伙伴的飞速成长。从零基础到脱胎换骨的惊艳蜕变；从外在语言的调整，深入到内在气质的重塑。我们共同明白：金钱是我们本自具足的能量，健康的密钥在内在觉知，而感恩让我们护佑世界的平衡。
-            <br><br>
-            告别2025，并不是结束，而是一个全新的开始。那些在共修中点亮的光，那些在课程里种下的种子，早已在我们的生命中生根发芽。
-          </div>
+          <div class="act-desc">2025年，素见方见证了无数小伙伴的飞速成长。我们共修《21天丰盛之旅》，见证了从零基础到脱胎换骨的惊艳蜕变；共修《24周万能金钥》，让我们从外在语言的调整，深入到内在气质的重塑。在财富课程中，我们顿悟金钱的本质：金钱是我们本自具足的能量。《健康之道》《释放法》《50天蜕变计划》……这一切让我们逐渐成为了一个有温度、有爱的人。</div>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- 线下活动 -->
-<section class="section" id="offline" style="background:var(--cream);">
-  <div class="section-inner">
-    <div class="sec-head">
-      <div class="sec-tag">OFFLINE ACTIVITIES</div>
-      <div class="sec-title">线下<span>活动</span></div>
-      <p class="sec-sub">面对面的连接，最深的疗愈在相遇之中</p>
+    <div class="mp-strip">
+      <div class="mp-strip-left">
+        <div>
+          <div class="mp-strip-name">素见方</div>
+          <div class="mp-strip-desc">关注公众号，获取最新活动资讯 · 报名课程</div>
+        </div>
+      </div>
+      <button class="mp-strip-btn" onclick="showTab('mp')">立即关注 →</button>
+    </div>
+  </div>
+
+  <!-- 线下活动 -->
+  <div id="tab-offline" class="tab-content">
+    <div class="block-head">
+      <div class="block-tag">OFFLINE ACTIVITIES</div>
+      <div class="block-title">线下<span>活动</span></div>
+      <p class="block-sub">面对面的连接，最深的疗愈在相遇之中</p>
       <div class="orn"><span class="orn-l"></span><span class="orn-d">✦</span><span class="orn-r"></span></div>
     </div>
-
     <div class="offline-grid">
       <div class="offline-card">
         <div class="offline-icon">🎊</div>
         <div class="offline-title">2025跨年晚会</div>
-        <div class="offline-sub">📍 广东肇庆 · 2025年12月31日</div>
-        <ul class="offline-items">
+        <div class="offline-date">📍 广东肇庆 · 2025年12月31日</div>
+        <ul class="offline-list">
           <li>三天两晚沉浸式聚会</li>
           <li>线下课程直播</li>
           <li>充满爱与温暖的家人共聚</li>
@@ -564,260 +418,256 @@ footer{
       <div class="offline-card">
         <div class="offline-icon">🌞</div>
         <div class="offline-title">暑假显化营</div>
-        <div class="offline-sub">📅 暂定六月 · 敬请期待</div>
-        <ul class="offline-items">
-          <li>👧 儿童课程：《每个孩子都能心想事成》</li>
-          <li>🌟 成人课程：《一念即达，赤马红羊显化不用等待》</li>
+        <div class="offline-date">📅 暂定六月 · 敬请期待</div>
+        <ul class="offline-list">
+          <li>👧 儿童课：《每个孩子都能心想事成》</li>
+          <li>🌟 成人课：《一念即达，赤马红羊显化不用等待》</li>
           <li>亲子共同成长，见证显化奇迹</li>
-          <li>报名咨询请联系公众号</li>
+          <li>报名请关注公众号</li>
         </ul>
       </div>
 
       <div class="offline-card">
         <div class="offline-icon">✨</div>
-        <div class="offline-title">更多线下活动</div>
-        <div class="offline-sub">持续举办中</div>
-        <ul class="offline-items">
-          <li>关注公众号获取最新活动资讯</li>
+        <div class="offline-title">更多活动持续举办中</div>
+        <div class="offline-date">📅 全年不间断</div>
+        <ul class="offline-list">
+          <li>关注公众号获取最新资讯</li>
           <li>素见方家人，随时欢迎你</li>
           <li>每一次相聚，都是灵魂的归处</li>
         </ul>
-        <button class="act-btn" style="margin-top:16px;" onclick="document.getElementById('mp').scrollIntoView({behavior:'smooth'})">关注获取资讯 →</button>
+        <button class="act-btn" onclick="showTab('mp')">关注获取资讯 →</button>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- 疗愈师 -->
-<section class="section" id="healers" style="background:var(--warm);">
-  <div class="section-inner">
-    <div class="sec-head">
-      <div class="sec-tag">HEALERS</div>
-      <div class="sec-title">有温度的<span>疗愈</span></div>
-      <p class="sec-sub">每位疗愈师，都走过了自己的黑暗<br>她们不是在理论上告诉你，而是真实经历过，然后帮你走出来</p>
+    <div class="mp-strip" style="margin-top:32px;">
+      <div class="mp-strip-left">
+        <div>
+          <div class="mp-strip-name">素见方</div>
+          <div class="mp-strip-desc">线下活动名额有限，关注公众号第一时间报名</div>
+        </div>
+      </div>
+      <button class="mp-strip-btn" onclick="showTab('mp')">立即关注 →</button>
+    </div>
+  </div>
+
+  <!-- 疗愈师 -->
+  <div id="tab-healers" class="tab-content">
+    <div class="block-head">
+      <div class="block-tag">HEALERS WITH HEART</div>
+      <div class="block-title">有温度的<span>疗愈</span></div>
+      <p class="block-sub">每位疗愈师，都走过了自己的黑暗<br>她们不是在理论上告诉你，而是真实经历过，然后帮你走出来</p>
       <div class="orn"><span class="orn-l"></span><span class="orn-d">✦</span><span class="orn-r"></span></div>
     </div>
-
-    <div class="healers-grid" id="healerGrid">
-      <!-- 疗愈师卡片由JS渲染 -->
-    </div>
+    <div class="healers-grid" id="healerGrid"></div>
   </div>
-</section>
 
-<!-- 冥想音频 -->
-<section class="section med-section" id="meditation">
-  <div class="section-inner">
-    <div class="sec-head">
-      <div class="sec-tag">MEDITATION AUDIO</div>
-      <div class="sec-title" style="color:#e8f0e8;">冥想<span style="color:var(--gold-light)">音频</span></div>
-      <p class="sec-sub" style="color:rgba(232,240,232,.6);">在声音里放下，在寂静里相遇</p>
-      <div class="orn">
-        <span class="orn-l" style="background:rgba(200,184,74,.2)"></span>
-        <span class="orn-d">✦</span>
-        <span class="orn-r" style="background:rgba(200,184,74,.2)"></span>
+  <!-- 冥想音频 -->
+  <div id="tab-meditation" class="tab-content">
+    <div class="med-wrap">
+      <div class="med-head">
+        <div class="block-tag">MEDITATION AUDIO</div>
+        <div class="block-title" style="color:#e8f0e8;">冥想<span style="color:var(--gold-light)">音频</span></div>
+        <p class="block-sub" style="color:rgba(232,240,232,.55);">在声音里放下，在寂静里相遇<br>每一次聆听，都是一次回家</p>
       </div>
-    </div>
-    <div class="med-grid">
-      <div class="med-card">
-        <div class="med-icon">☀️</div>
-        <div class="med-title">与太阳链接</div>
-        <div class="med-teacher">张燕老师引导 · 能量充电 · 适合清晨</div>
-        <div class="med-desc">让自己与太阳的能量链接，充满光与力量。每天清晨练习，感受生命力从内而外升起。</div>
-        <audio class="med-player" controls>
-          <source src="https://raw.githubusercontent.com/yunxia2749/sujianfang/main/%E4%B8%8E%E5%A4%AA%E9%98%B3%E9%93%BE%E6%8E%A5(1).mp3" type="audio/mpeg">
-        </audio>
-      </div>
-      <div class="med-card">
-        <div class="med-icon">🌙</div>
-        <div class="med-title">归于当下</div>
-        <div class="med-teacher">五分钟安定冥想 · 适合睡前</div>
-        <div class="med-desc">放下今天所有的重量，让身体和心回到此刻。五分钟，带你安静下来。</div>
-        <div class="med-coming">🌙 即将上线</div>
-      </div>
-      <div class="med-card">
-        <div class="med-icon">🌿</div>
-        <div class="med-title">情绪消融</div>
-        <div class="med-teacher">释放积压情绪 · 适合任何时刻</div>
-        <div class="med-desc">当情绪来了，不用压抑它，用这个冥想陪它走完。情绪消融了，你会发现底下有光。</div>
-        <div class="med-coming">🌿 即将上线</div>
-      </div>
-      <div class="med-card">
-        <div class="med-icon">💫</div>
-        <div class="med-title">灵魂蓝图激活</div>
-        <div class="med-teacher">深度冥想 · 连接更高自我</div>
-        <div class="med-desc">闭上眼睛，跟随引导，去见见那个真正的你。你比你以为的，更有力量。</div>
-        <div class="med-coming">💫 即将上线</div>
-      </div>
-      <div class="med-card">
-        <div class="med-icon">🌸</div>
-        <div class="med-title">与金钱链接</div>
-        <div class="med-teacher">潘丹老师引导 · 财富频率</div>
-        <div class="med-desc">清理对金钱的限制信念，打开内心的接收频道。当你真正允许丰盛，它就会来。</div>
-        <div class="med-coming">🌸 即将上线</div>
+      <div class="med-grid">
+        <div class="med-card">
+          <div class="med-icon">☀️</div>
+          <div class="med-title">与太阳链接</div>
+          <div class="med-teacher">张燕老师引导 · 能量充电 · 适合清晨</div>
+          <div class="med-desc">让自己与太阳的能量链接，充满光与力量。每天清晨练习，感受生命力从内而外升起。</div>
+          <audio class="med-audio" controls>
+            <source src="https://raw.githubusercontent.com/yunxia2749/sujianfang/main/%E4%B8%8E%E5%A4%AA%E9%98%B3%E9%93%BE%E6%8E%A5(1).mp3" type="audio/mpeg">
+          </audio>
+        </div>
+        <div class="med-card">
+          <div class="med-icon">🌙</div>
+          <div class="med-title">归于当下</div>
+          <div class="med-teacher">五分钟安定冥想 · 适合睡前</div>
+          <div class="med-desc">放下今天所有的重量，让身体和心回到此刻。</div>
+          <div class="med-soon">🌙 即将上线</div>
+        </div>
+        <div class="med-card">
+          <div class="med-icon">🌿</div>
+          <div class="med-title">情绪消融</div>
+          <div class="med-teacher">释放积压情绪 · 适合任何时刻</div>
+          <div class="med-desc">当情绪来了，用这个冥想陪它走完。情绪消融了，底下有光。</div>
+          <div class="med-soon">🌿 即将上线</div>
+        </div>
+        <div class="med-card">
+          <div class="med-icon">💫</div>
+          <div class="med-title">灵魂蓝图激活</div>
+          <div class="med-teacher">深度冥想 · 连接更高自我</div>
+          <div class="med-desc">去见见那个真正的你。你比你以为的，更有力量。</div>
+          <div class="med-soon">💫 即将上线</div>
+        </div>
+        <div class="med-card">
+          <div class="med-icon">🌸</div>
+          <div class="med-title">与金钱链接</div>
+          <div class="med-teacher">潘丹老师引导 · 财富频率</div>
+          <div class="med-desc">清理对金钱的限制信念，打开内心的接收频道。</div>
+          <div class="med-soon">🌸 即将上线</div>
+        </div>
       </div>
     </div>
   </div>
-</section>
 
-<!-- 公众号 -->
-<section class="mp-section" id="mp">
-  <div class="sec-head" style="margin-bottom:32px;">
-    <div class="sec-tag">WECHAT OFFICIAL ACCOUNT</div>
-    <div class="sec-title">关注<span>公众号</span></div>
-    <p class="sec-sub">第一时间获取活动资讯、共修课程、疗愈内容</p>
-  </div>
-  <div class="mp-card">
-    <div class="mp-icon">📱</div>
-    <div class="mp-name">素见方</div>
-    <div class="mp-intro">
-      通过融合教育、亲子关系、养老、健康、AI人工智能、催眠及心灵疗愈等多方面内容，传播积极健康的生活理念与文化，助力人们提升生活品质与幸福感。
+  <!-- 公众号 -->
+  <div id="tab-mp" class="tab-content">
+    <div class="block-head">
+      <div class="block-tag">WECHAT OFFICIAL ACCOUNT</div>
+      <div class="block-title">关注<span>公众号</span></div>
+      <p class="block-sub">第一时间获取活动资讯、共修课程、疗愈内容</p>
+      <div class="orn"><span class="orn-l"></span><span class="orn-d">✦</span><span class="orn-r"></span></div>
     </div>
-    <div class="mp-qr-hint">
-      🔍 微信搜索「素见方」即可关注<br>
-      <span style="font-size:11px;opacity:.7;margin-top:6px;display:block;">或扫描下方二维码</span>
+    <div style="max-width:500px;margin:0 auto;">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:24px;padding:40px;box-shadow:var(--shadow);text-align:center;">
+        <div style="font-size:52px;margin-bottom:16px;">📱</div>
+        <div style="font-family:'Ma Shan Zheng',serif;font-size:30px;color:var(--gold);letter-spacing:.2em;margin-bottom:14px;">素见方</div>
+        <div style="font-size:13px;color:var(--ink-soft);line-height:1.9;letter-spacing:.06em;margin-bottom:24px;">
+          通过融合教育、亲子关系、养老、健康、AI人工智能、催眠及心灵疗愈等多方面内容，传播积极健康的生活理念与文化，助力人们提升生活品质与幸福感。
+        </div>
+        <div style="padding:20px;border-radius:14px;background:var(--gold-dim);border:1px dashed var(--border);">
+          <div style="font-size:14px;color:var(--ink-soft);letter-spacing:.1em;margin-bottom:6px;">🔍 微信搜索</div>
+          <div style="font-family:'Ma Shan Zheng',serif;font-size:24px;color:var(--gold);letter-spacing:.2em;">素见方</div>
+          <div style="font-size:11px;color:var(--ink-dim);margin-top:8px;letter-spacing:.06em;">即可关注我们的公众号</div>
+        </div>
+      </div>
     </div>
   </div>
-</section>
 
-<!-- 页脚 -->
-<footer>
-  <div class="footer-logo">素见方</div>
-  <div class="footer-sub" style="margin-bottom:8px;">素未谋面，一见如故，方见本色</div>
-  <div class="footer-sub">© 2026 素见方文化传媒有限公司 · 静 · 净 · 镜 · 敬</div>
-</footer>
+</div><!-- end page-home -->
 
 <!-- 手机底部导航 -->
 <nav class="bottom-nav">
   <div class="bnav-items">
-    <button class="bnav-item active" onclick="scrollTo('home',this)">
-      <span class="bnav-icon">🏠</span><span class="bnav-label">首页</span>
+    <button class="bnav-item active" id="bnav-online" onclick="showTab('online',this)">
+      <span class="bi">🌟</span><span class="bl">线上活动</span>
     </button>
-    <button class="bnav-item" onclick="scrollTo('online',this)">
-      <span class="bnav-icon">🌟</span><span class="bnav-label">线上活动</span>
+    <button class="bnav-item" id="bnav-offline" onclick="showTab('offline',this)">
+      <span class="bi">🌿</span><span class="bl">线下活动</span>
     </button>
-    <button class="bnav-item" onclick="scrollTo('offline',this)">
-      <span class="bnav-icon">🌿</span><span class="bnav-label">线下活动</span>
+    <button class="bnav-item" id="bnav-healers" onclick="showTab('healers',this)">
+      <span class="bi">💫</span><span class="bl">疗愈师</span>
     </button>
-    <button class="bnav-item" onclick="scrollTo('healers',this)">
-      <span class="bnav-icon">💫</span><span class="bnav-label">疗愈师</span>
+    <button class="bnav-item" id="bnav-meditation" onclick="showTab('meditation',this)">
+      <span class="bi">🎵</span><span class="bl">冥想</span>
     </button>
-    <button class="bnav-item" onclick="scrollTo('mp',this)">
-      <span class="bnav-icon">📱</span><span class="bnav-label">公众号</span>
+    <button class="bnav-item" id="bnav-mp" onclick="showTab('mp',this)">
+      <span class="bi">📱</span><span class="bl">公众号</span>
     </button>
   </div>
 </nav>
 
+<div class="toast" id="toast"></div>
+
 <script>
-// 导航滚动
-function scrollTo(id, btn){
-  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+// Tab切换
+function showTab(id, btn){
+  // 隐藏所有tab内容
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  // 取消所有tab按钮激活
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.bnav-item').forEach(b=>b.classList.remove('active'));
+
+  // 显示目标
+  const target = document.getElementById('tab-'+id);
+  if(target) target.classList.add('active');
+
+  // 激活对应按钮
+  document.querySelectorAll('.tab-btn').forEach(b=>{
+    if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes("'"+id+"'"))
+      b.classList.add('active');
+  });
+  const bnav = document.getElementById('bnav-'+id);
+  if(bnav) bnav.classList.add('active');
   if(btn) btn.classList.add('active');
+
+  // 滚动到tab导航位置
+  const tabNav = document.getElementById('tabNav');
+  if(tabNav){
+    window.scrollTo({top: tabNav.offsetTop - 60, behavior:'smooth'});
+  }
 }
 
 // 疗愈师数据
 const HEALERS = [
-  {
-    name:'云霞', en:'Yunxia · 真相看见者', emoji:'🌙',
-    tags:['一张照片连接灵魂蓝图','即刻转念快速拿到结果','看见你的天赋与潜能','深度疗愈快速改变'],
-    bio:'别人需要见面，我只需要一张照片——就能连接你的灵魂蓝图，看见你的核心卡点与天赋潜能。\n\n别人需要很多次，我能帮你即刻转念、即刻拿到结果。靠近我的人，都会莫名安心——因为我能看见你还没看见的自己。',
-    price:'西塔潜意识深度挖掘\n深度个案结缘价 699元/60分钟',
-    services:['财富卡点清理','亲密关系重塑','情绪毒素排解','核心天赋激活'],
-    wechat:'Yunxia472749',
-    photoKey:'yunxia'
-  },
-  {
-    name:'爱晓', en:'Ai Xiao · 能量链接者', emoji:'🌸',
-    tags:['阿卡西记录解读','纯能量链接','前世今生印记'],
-    bio:'纯能量链接的阿卡西疗愈师，带领案主共同进入阿卡西能量场，亲身连接高我。\n\n全程以纯能量链接感知你的身心状态、前世今生印记、核心卡点，精准定位根源。你会亲身感受到能量的流动、卡点的清理、灵魂的指引。',
-    price:'阿卡西记录解读个案\n399元/次',
-    services:['阿卡西记录解读','能量卡点清理','灵魂课题揭示'],
-    wechat:'suJianFang2024',
-    photoKey:'aixiao'
-  },
-  {
-    name:'潘丹', en:'Pan Dan · 催眠疗愈师', emoji:'💫',
-    tags:['催眠疗愈','金钱链接','国家心理治疗师'],
-    bio:'国家心理治疗师、催眠治疗师、健康管理师。熟练掌握催眠技术，拥有丰富个案经验。\n\n致力于灵性知识的探索成长及实修，体悟生命真正的自由度、喜悦与圆满，相同的愿望和祝福也送给每一位。',
-    price:'催眠疗愈个案\n预约制，随时可约',
-    services:['催眠疗愈','与金钱链接','深度内在疗愈'],
-    wechat:'suJianFang2024',
-    photoKey:'pandan'
-  },
-  {
-    name:'绿竹', en:'Lv Zhu · 高维赋能导师', emoji:'🎋',
-    tags:['高维赋能','女性成长','企业赋能'],
-    bio:'绿竹高维赋能企业有限公司创始人，木兰书院创始人，五维慧生活创始人。\n\n2019年起赋能陪伴1000+家庭收获幸福和财富双升级。致力于陪伴3亿女性，在美丽、智慧、富足、贵气、健康五方面全面升级。',
-    price:'高维赋能个案\n预约制，随时可约',
-    services:['高维赋能','女性财富成长','企业能量赋能'],
-    wechat:'Lidanfeng812',
-    photoKey:'lvzhu'
-  },
-  {
-    name:'张燕', en:'Zhang Yan · 能量引导师', emoji:'☀️',
-    tags:['冥想引导','能量疗愈','与太阳链接'],
-    bio:'专注于能量冥想引导，带领学员与宇宙高维能量链接。\n\n「与太阳链接」冥想课程主理人，帮助更多人感受生命力从内而外升起，活出光与力量的状态。',
-    price:'能量冥想引导\n预约制，随时可约',
-    services:['冥想音频录制','能量引导课程','与太阳链接'],
-    wechat:'suJianFang2024',
-    photoKey:null
-  },
-  {
-    name:'秋葵', en:'Qiu Kui · 能量大拜', emoji:'🌻',
-    tags:['能量大拜','身心灵引导','公益活动'],
-    bio:'素见方核心成员，「秋葵姐的能量大拜」主理人。\n\n用独特的能量仪式帮助大家清理身心，让每一位参与者都能在充满爱的场域中，感受到内在能量的流动与升腾。',
-    price:'能量大拜仪式\n预约制，随时可约',
-    services:['能量大拜','身心清理','公益共修'],
-    wechat:'suJianFang2024',
-    photoKey:null
-  }
+  {name:'云霞',en:'Yunxia · 真相看见者',emoji:'🌙',
+   tags:['一张照片连接灵魂蓝图','即刻转念拿到结果','看见天赋与潜能','深度疗愈快速改变'],
+   bio:'别人需要见面，我只需要一张照片——就能连接你的灵魂蓝图，看见你的核心卡点与天赋潜能。一念即可启动疗愈，帮助你快速、即刻、深层改变。',
+   price:'西塔潜意识深度挖掘','priceVal':'699元 / 60分钟',
+   services:['财富卡点清理','亲密关系重塑','情绪毒素排解','核心天赋激活'],
+   wechat:'Yunxia472749',photoKey:'yunxia'},
+  {name:'爱晓',en:'Ai Xiao · 能量链接者',emoji:'🌸',
+   tags:['阿卡西记录解读','纯能量链接','前世今生'],
+   bio:'纯能量链接的阿卡西疗愈师，带领案主共同进入阿卡西能量场，亲身连接高我。全程感知你的身心状态、前世今生印记、核心卡点，精准定位根源。',
+   price:'阿卡西记录解读个案','priceVal':'399元 / 次',
+   services:['阿卡西记录解读','能量卡点清理','灵魂课题揭示'],
+   wechat:'suJianFang2024',photoKey:'aixiao'},
+  {name:'潘丹',en:'Pan Dan · 催眠疗愈师',emoji:'💫',
+   tags:['催眠疗愈','金钱链接','国家心理治疗师'],
+   bio:'国家心理治疗师、催眠治疗师、健康管理师。熟练掌握催眠技术，拥有丰富个案经验。体悟生命真正的自由度、喜悦与圆满。',
+   price:'催眠疗愈个案','priceVal':'预约制，随时可约',
+   services:['催眠疗愈','与金钱链接','内在深度疗愈'],
+   wechat:'suJianFang2024',photoKey:'pandan'},
+  {name:'绿竹',en:'Lv Zhu · 高维赋能导师',emoji:'🎋',
+   tags:['高维赋能','女性成长','企业赋能'],
+   bio:'绿竹高维赋能企业有限公司创始人，木兰书院创始人。2019年起赋能陪伴1000+家庭。致力于陪伴3亿女性，在美丽、智慧、富足、贵气、健康五方面全面升级。',
+   price:'高维赋能个案','priceVal':'预约制，随时可约',
+   services:['高维赋能','女性财富成长','企业能量赋能'],
+   wechat:'Lidanfeng812',photoKey:'lvzhu'},
+  {name:'张燕',en:'Zhang Yan · 能量引导师',emoji:'☀️',
+   tags:['冥想引导','能量疗愈','与太阳链接'],
+   bio:'专注于能量冥想引导，带领学员与宇宙高维能量链接。「与太阳链接」冥想课程主理人，帮助更多人感受生命力从内而外升起。',
+   price:'能量冥想引导','priceVal':'预约制，随时可约',
+   services:['冥想音频录制','能量引导课程'],
+   wechat:'suJianFang2024',photoKey:null},
+  {name:'秋葵',en:'Qiu Kui · 能量大拜',emoji:'🌻',
+   tags:['能量大拜','身心灵引导','公益活动'],
+   bio:'素见方核心成员，「秋葵姐的能量大拜」主理人。用独特的能量仪式帮助大家清理身心，感受内在能量的流动与升腾。',
+   price:'能量大拜仪式','priceVal':'预约制，随时可约',
+   services:['能量大拜','身心清理','公益共修'],
+   wechat:'suJianFang2024',photoKey:null},
 ];
 
-// 疗愈师照片
 const PHOTOS = {'yunxia':'data:image/jpeg;base64,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','pandan':'data:image/jpeg;base64,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','lvzhu':'data:image/jpeg;base64,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','aixiao':'data:image/jpeg;base64,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'};
 
 function renderHealers(){
   const grid = document.getElementById('healerGrid');
-  grid.innerHTML = HEALERS.map(h => {
-    const photoHtml = (h.photoKey && PHOTOS[h.photoKey])
-      ? `<img class="healer-photo" src="${PHOTOS[h.photoKey]}" alt="${h.name}">`
-      : `<div class="healer-photo-placeholder">${h.emoji}</div>`;
-    
-    const tags = h.tags.map(t=>`<span class="healer-tag">${t}</span>`).join('');
-    const services = h.services.map(s=>`<span class="past-tag">${s}</span>`).join('');
-    const bioHtml = h.bio.replace(/\n\n/g,'</p><p style="margin-top:10px;">');
-    const priceLines = h.price.split('\n');
-    
-    return `<div class="healer-card">
-      ${photoHtml}
-      <div class="healer-body">
-        <div class="healer-name">${h.name}老师</div>
-        <div class="healer-en">${h.en}</div>
-        <div class="healer-tags">${tags}</div>
-        <div class="healer-bio"><p>${bioHtml}</p></div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;">${services}</div>
-        <div class="healer-price">
-          <div class="healer-price-label">💎 个案服务</div>
-          <div class="healer-price-val">${priceLines[0]}</div>
-          ${priceLines[1]?`<div style="font-size:12px;color:var(--gold);margin-top:2px;">${priceLines[1]}</div>`:''}
+  if(!grid) return;
+  grid.innerHTML = HEALERS.map(h=>{
+    const photo = (h.photoKey && PHOTOS[h.photoKey])
+      ? `<img class="h-photo" src="${PHOTOS[h.photoKey]}" alt="${h.name}">`
+      : `<div class="h-placeholder">${h.emoji}</div>`;
+    const tags = h.tags.map(t=>`<span class="h-tag">${t}</span>`).join('');
+    const services = h.services.map(s=>`<span class="atag">${s}</span>`).join('');
+    return `<div class="h-card">
+      ${photo}
+      <div class="h-body">
+        <div class="h-name">${h.name}老师</div>
+        <div class="h-en">${h.en}</div>
+        <div class="h-tags">${tags}</div>
+        <div class="h-bio">${h.bio}</div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;">${services}</div>
+        <div class="h-price-box">
+          <div class="h-price-label">💎 个案服务</div>
+          <div class="h-price">${h.price}</div>
+          <div class="h-price-sub">${h.priceVal}</div>
         </div>
-        <div class="healer-contact">
-          <button class="healer-wechat" onclick="copyWechat('${h.wechat}')">
-            💬 微信预约 ${h.wechat}
-          </button>
-        </div>
+        <button class="h-wechat" onclick="copyWechat('${h.wechat}','${h.name}')">
+          💬 微信预约 · ${h.wechat}
+        </button>
       </div>
     </div>`;
   }).join('');
 }
 
-function copyWechat(id){
+function copyWechat(id, name){
   navigator.clipboard.writeText(id).catch(()=>{});
-  const t = document.createElement('div');
-  t.style.cssText='position:fixed;bottom:100px;left:50%;transform:translateX(-50%);background:#2c1e12;color:#fdf8f0;padding:10px 20px;border-radius:100px;font-size:13px;z-index:9999;letter-spacing:.06em;';
-  t.textContent = `微信号 ${id} 已复制 ✓`;
-  document.body.appendChild(t);
-  setTimeout(()=>t.remove(), 2500);
+  const t = document.getElementById('toast');
+  t.textContent = `${name}老师微信号 ${id} 已复制 ✓`;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2500);
 }
 
 // 花瓣动画
@@ -826,45 +676,27 @@ function initPetals(){
   if(!canvas) return;
   const ctx = canvas.getContext('2d');
   function resize(){canvas.width=canvas.offsetWidth;canvas.height=canvas.offsetHeight;}
-  resize();window.addEventListener('resize',resize);
-  const colors=['rgba(232,184,200,','rgba(216,200,232,','rgba(232,200,176,','rgba(200,216,200,','rgba(248,220,180,'];
-  class Petal{
-    constructor(init=false){this.reset(init);}
-    reset(init=false){
-      this.x=Math.random()*canvas.width;
-      this.y=init?Math.random()*canvas.height:-20;
-      this.size=5+Math.random()*9;
-      this.speedY=0.3+Math.random()*0.7;
-      this.speedX=-0.4+Math.random()*0.8;
-      this.rotation=Math.random()*Math.PI*2;
-      this.rotSpeed=-0.02+Math.random()*0.04;
-      this.sway=Math.random()*Math.PI*2;
-      this.swaySpeed=0.01+Math.random()*0.02;
-      this.swayAmt=0.4+Math.random()*1.2;
-      this.opacity=0.25+Math.random()*0.45;
-      this.color=colors[Math.floor(Math.random()*colors.length)];
-    }
-    draw(){
-      ctx.save();ctx.translate(this.x,this.y);ctx.rotate(this.rotation);
-      ctx.globalAlpha=this.opacity;
-      ctx.beginPath();ctx.scale(1,0.6);
-      ctx.arc(0,0,this.size,0,Math.PI*2);
-      ctx.fillStyle=this.color+'0.75)';ctx.fill();
-      ctx.restore();
-    }
-    update(){
-      this.sway+=this.swaySpeed;
-      this.x+=this.speedX+Math.sin(this.sway)*this.swayAmt;
-      this.y+=this.speedY;this.rotation+=this.rotSpeed;
-      if(this.y>canvas.height+20)this.reset();
-    }
-  }
-  const petals=[];
-  const count=Math.min(40,Math.floor(canvas.width/20));
-  for(let i=0;i<count;i++)petals.push(new Petal(true));
+  resize(); window.addEventListener('resize', resize);
+  const colors = ['rgba(232,184,200,','rgba(216,200,232,','rgba(232,200,176,','rgba(200,216,200,','rgba(248,220,180,'];
+  const petals = Array.from({length:35},()=>{
+    const p = {reset(init){
+      p.x=Math.random()*canvas.width; p.y=init?Math.random()*canvas.height:-15;
+      p.s=5+Math.random()*8; p.vy=0.3+Math.random()*0.6; p.vx=-0.3+Math.random()*0.6;
+      p.r=Math.random()*Math.PI*2; p.dr=-0.02+Math.random()*0.04;
+      p.sw=Math.random()*Math.PI*2; p.sws=0.01+Math.random()*0.02; p.swa=0.4+Math.random()*1.1;
+      p.op=0.2+Math.random()*0.4; p.c=colors[Math.floor(Math.random()*colors.length)];
+    }};
+    p.reset(true); return p;
+  });
   function animate(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    petals.forEach(p=>{p.update();p.draw();});
+    petals.forEach(p=>{
+      p.sw+=p.sws; p.x+=p.vx+Math.sin(p.sw)*p.swa; p.y+=p.vy; p.r+=p.dr;
+      if(p.y>canvas.height+15) p.reset(false);
+      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.r); ctx.globalAlpha=p.op;
+      ctx.beginPath(); ctx.scale(1,0.6); ctx.arc(0,0,p.s,0,Math.PI*2);
+      ctx.fillStyle=p.c+'0.7)'; ctx.fill(); ctx.restore();
+    });
     requestAnimationFrame(animate);
   }
   animate();
